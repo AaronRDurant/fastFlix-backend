@@ -1,21 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Documentation</title>
-	</head>
-	
-	<body>
-		<header>
-			<h1>fastFlix</h1>
-			<h2>Create a REST API with Node.js</h2>
-		</header>
-		<section>
-			<h3>Objective:</h3>
-			<p>To build the server­-side component of a web application that will provide users with information about movies, directors, and genres.</p>
-			<p>Users will be able to sign up, update their personal information, and create a list of their favorite movies.</p>
-		</section>
-	</body>
-	
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link
+	  rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	  crossorigin="anonymous"
+	/>
+	<link rel="stylesheet" href="../css/styles.css" />
+	<title>fastFlix API Documentation</title>
+  </head>
+  <body class="bg-light text-dark">
+	<div class="container mt-2">
+	  <div class="row">
+		<div class="col">
+		  <h1 class="h2 text-center">
+			<span class="text-primary">fast</span
+			><span class="font-italic">Flix</span> API Documentation
+		  </h1>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-lg-6 mx-auto">
+		  <p class="text-center">A modern RESTful API for racing films.
+		  </p>
+		</div>
+	  </div>
+	<div class="container mt-3">
+	  <table id="table-2" class="table table-striped table-light mw-100">
+		<legend class="text-primary mt-5 mb-3">Movies</legend>
+		<thead>
+		  <tr>
+			<th scope="col">HTTP Method</th>
+			<th scope="col">URL</th>
+			<th scope="col">Logic</th>
+			<th scope="col">Request Format</th>
+			<th scope="col">Response Format</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<th class="text-success" scope="row">GET</th>
+			<td>/movies</td>
+			<td>Return a list of all movies</td>
+			<td>None</td>
+			<td>Array containing JSON objects with data of all movies</td>
+		  </tr>
+		  <tr>
+			<th class="text-success" scope="row">GET</th>
+			<td>/movies/<span class="text-success">{title}</span></td>
+			<td>Return data about a single movie</td>
+			<td>None</td>
+			<td>JSON object with data of a single movie</td>
+		  </tr>
+		  <tr>
+			<th class="text-success" scope="row">GET</th>
+			<td>/movies/genres/<span class="text-success">{genre}</span></td>
+			<td>Return all movies containing a specific genre</td>
+			<td>None</td>
+			<td>Array of JSON objects with data of all movies that contain specified genre</td>
+		  </tr>
+		  <tr>
+			<th class="text-success">GET</th>
+			<td>/movies/directors/<span class="text-success">{director}</span></td>
+			<td>Return data about a single director</td>
+			<td>None</td>
+			<td>JSON object with data of a single director</td>
+		  </tr>
+		</tbody>
+	  </table>
+	  <table id="table-2" class="table table-striped table-light mw-100 mb-5">
+		<legend class="text-primary mt-5 mb-3">Users</legend>
+		<thead>
+		  <tr>
+			<th scope="col">HTTP Method</th>
+			<th scope="col">URL</th>
+			<th scope="col">Logic</th>
+			<th scope="col">Request Format</th>
+			<th scope="col">Response Format</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<th class="text-info" scope="row">POST</th>
+			<td>/users</td>
+			<td>Add a new user</td>
+			<td>JSON</td>
+			<td>JSON object with data of added user</td>
+		  </tr>
+		  <tr>
+			<th class="text-primary" scope="row">PUT</th>
+			<td>/users/<span class="text-success">{username}</span></td>
+			<td>Update data of a single user</td>
+			<td>JSON</td>
+			<td>JSON object with updated data of user</td>
+		  </tr>
+		  <tr>
+			<th class="text-info" scope="row">POST</th>
+			<td>/users/<span class="text-success">{username}</span>/favorites/<span class="text-success">{title}</span></td>
+			<td>Add a movie to user's list of favorites</td>
+			<td>None</td>
+			<td>A text message confirming the title was successfully added to user's list of favorites</td>
+		  </tr>
+		  <tr>
+			<th class="text-danger">DELETE</th>
+			<td>/users/<span class="text-success">{username}</span>/favorites/<span class="text-success">{title}</span></td>
+			<td>Remove single movie from user's list of favorites</td>
+			<td>None</td>
+			<td>A text message confirming the title was successfully removed from user's list of favorites</td>
+		  </tr>
+		  <tr>
+			<th class="text-danger">DELETE</th>
+			<td>/users/<span class="text-success">{username} </span></td>
+			<td>Remove a user's account</td>
+			<td>None</td>
+			<td>A text message confirming that the user's account was successfully removed</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+	<script
+	  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	  crossorigin="anonymous"
+	></script>
+	<script
+	  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	  crossorigin="anonymous"
+	></script>
+	<script src="../js/app.js"></script>
+  </body>
 </html>
