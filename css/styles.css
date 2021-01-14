@@ -1,6 +1,16 @@
 html {
 	  font-size: 0.9rem;
 	}
+
+.container {
+	  max-width: 960px;
+	}
+	
+.scrollspy-example {
+	  position: relative;
+	  height: 400px;
+	  overflow: auto;
+}
 	
 	@include media-breakpoint-up(sm) {
 	  html {
