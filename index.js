@@ -24,7 +24,12 @@ const passport = require('passport');
 require('./passport');
 
 const cors = require('cors');
-app.use(cors());
+
+app.use(
+	cors({
+		allowedHeaders: '*',
+	})
+);
 
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
