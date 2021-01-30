@@ -18,33 +18,27 @@ app.use(express.static('public'));
 
 app.use(bodyParser.json());
 
-let auth = require('./auth')(app);
-
 const passport = require('passport');
 require('./passport');
 
 const cors = require('cors');
 
-app.use(
-	cors({
-		allowedHeaders: '*',
-	})
-);
-
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234','https://fastflixdb.herokuapp.com'];
 
 const { check, validationResult } = require('express-validator');
 
-// app.use(cors({
-// 	origin: (origin, callback) => {
-// 		if(!origin) return callback(null, true);
-// 		if(allowedOrigins.indexOf(origin) === -1){
-// 			let message = 'The CORS policy for this application does not allow access from origin ' + origin;
-// 			return callback(new Error(message), false);
-// 		}
-// 		return callback (null, true);
-// 	}
-// }));
+app.use(cors({
+	origin: (origin, callback) => {
+		if(!origin) return callback(null, true);
+		if(allowedOrigins.indexOf(origin) === -1){
+			let message = 'The CORS policy for this application does not allow access from origin ' + origin;
+			return callback(new Error(message), false);
+		}
+		return callback (null, true);
+	}
+}));
+
+let auth = require('./auth')(app);
 
 // Get home page
 app.get('/', (req, res) => {
