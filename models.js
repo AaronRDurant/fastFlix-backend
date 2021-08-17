@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
-/**
- * Creates database format for movie collection
- */
 let movieSchema = mongoose.Schema({
-	Title: { type: String, required: true },
-	Description: { type: String, required: true },
+	Title: {type: String, required: true},
+	Description: {type: String, required: true},
 	Genre: {
 		Name: String,
 		Description: String
@@ -21,30 +17,21 @@ let movieSchema = mongoose.Schema({
 	Featured: Boolean
 });
 
-/**
- * Creates database format for user collection
- */
+const bcrypt = require('bcrypt');
+
 let userSchema = mongoose.Schema({
-	Username: { type: String, required: true },
-	Password: { type: String, required: true },
-	Email: { type: String, required: true },
+	Username: {type: String, required: true},
+	Password: {type: String, required: true},
+	Email: {type: String, required: true},
 	Birthday: Date,
-	FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+	FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectID, ref: 'Movie'}]
 });
 
-/**
- * Hashes user password to be stored in database
- * @param {*} password 
- */
 userSchema.statics.hashPassword = (password) => {
 	return bcrypt.hashSync(password, 10);
 };
 
-/**
- * Compares user's login password with hashed stored password
- * @param {*} password 
- */
-userSchema.methods.validatePassword = function (password) {
+userSchema.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.Password);
 };
 
