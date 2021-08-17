@@ -1,34 +1,36 @@
 {
-  "name": "fastFlix-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AaronRDurant/movie_api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AaronRDurant/movie_api/issues"
-  },
-  "homepage": "https://github.com/AaronRDurant/movie_api#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-validator": "^6.12.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.3",
-    "morgan": "^1.10.0",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
-  }
+	"name": "fastFlix-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-validator": "^6.12.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.13.7",
+		"morgan": "^1.10.0",
+		"passport": "^0.4.1",
+		"passport-jwt": "^4.0.0",
+		"passport-local": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.13",
+		"@types/morgan": "^1.9.3",
+		"eslint": "^7.32.0",
+		"eslint-config-google": "^0.14.0",
+		"eslint-plugin-react": "^7.24.0"
+	},
+	"engines": {
+		"node": "^14.13.1"
+	}
 }
