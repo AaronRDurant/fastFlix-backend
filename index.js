@@ -157,39 +157,40 @@ Users.findOne({ Username: req.body.Username })
 // Update user info by username
 app.put('/users/:Username',
 [
-	check('Username', 'Username is required').isLength({min: 5}),
-	check('Username', 'Username contains non-alphanumeric characters — not allowed.').isAlphanumeric(),
+	check('Username', 'Username is required').isLength({ min: 5 }),
+	check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
 	check('Password', 'Password is required').not().isEmpty(),
-	check('Email', 'Email does not appear to be valid.').isEmail()
+	check('Email', 'Email does not appear to be valid').isEmail()
 ], (req, res) => {
-		
-// Checks validation object for errors
-let errors = validationResult(req);
+	// check the validation object for errors
+	let errors = validationResult(req);
 
-if (!errors.isEmpty()) {
-	return res.status(422).json({ errors: errors.array() });
-}
-
-let hashedPassword = Users.hashPassword(req.body.Password);
-
-Users.findOneAndUpdate({ Username: res.params.Username },
-	{ $set: {
-		Username: req.body.Username,
-		Password: hashedPassword,
-		Email: req.body.Email,
-		Birthday: req.body.Birthday
+	if (!errors.isEmpty()) {
+		return res.status(422).send("Error: Your username must contain a minimum of five non alphanumeric characters, a password is required and a valid email address must be submitted");
 	}
-},
-{ new: true }, // Returns the updated document
-(error, updatedUser) => {
-	if (error) {
-		console.error(error);
-		res.status(500).send('Error: ' + error);
-	} else {
-		res.status(201).json(updatedUser);
-	}
+
+	let hashedPassword = Users.hashPassword(req.body.Password);
+
+	Users.findOneAndUpdate({ Username: req.params.Username }, {
+		$set:
+		{
+			Username: req.body.Username,
+			Password: req.body.Password,
+			Email: req.body.Email,
+			Birthday: req.body.Birthday
+		}
+	},
+		{ new: true }, // This line makes sure that the updated document is returned
+		(err, updatedUser) => {
+			if (err) {
+				console.error(err);
+				res.status(500).send('Error: The user was not updated');
+			} else {
+				res.json(updatedUser);
+			}
+		});
 });
-});
+
 
 // Add a movie to user's favorites
 app.post('/users/:Username/favorites/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
