@@ -1,8 +1,8 @@
 # fastFlix-backend
 
-This repository hosts the backend logic for fastFlix, a full-stack web application that allows users to browse some of the most famous racing-themed films of all time, make an account, and curate a personal list of their favorites.
+This repository hosts the back-end logic for fastFlix, a full-stack web application that allows users to browse popular racing films, make an account, and curate a personal list of their favorites.
 
-There are two frontend clients that source data from this REST API, built with React and Angular.
+There are two front-end clients that source data from this REST API, built with [React](https://github.com/AaronRDurant/fastFlix-React-client) and [Angular](https://github.com/AaronRDurant/fastFlix-Angular-client).
 
 ## Technologies
 - MongoDB
